@@ -19,7 +19,7 @@ except ImportError:
 class Tool(Circle, threading.Thread):
     COLOR = [0, 0, 255]  # RGB
     
-    def __init__(self, x, y, r, port='COM5', baudrate=115200):  # parent
+    def __init__(self, x, y, r, port='COM13', baudrate=115200):  # parent
         threading.Thread.__init__(self)  # super class constructor
         self.daemon = True  # set to True so that this thread stops when the process stops
         Circle.__init__(self, -1, x, y, r)  # super class constructor
@@ -98,7 +98,7 @@ class Tool(Circle, threading.Thread):
                 raw_data = self.ser.read(24)
                 self.pedalPressCount = struct.unpack("<1B", self.ser.read())[0]
                 angle_x, angle_y, angle_z = struct.unpack("<3d", raw_data)
-                self.angle_to_coordinates(-angle_y, -angle_x, angle_z)
+                self.angle_to_coordinates(-angle_z, angle_x, angle_y)
     
                 if self.logging:
                     log_metrics(mark=self.target.idx, pedal_presses=self.pedalPressCount,
@@ -113,8 +113,8 @@ class Tool(Circle, threading.Thread):
             self.disconnect()
         
     def angle_to_coordinates(self, angle_x, angle_y, angle_z):
-        angle_scale = 1
-        zoom_scale = 3
+        angle_scale = 2
+        zoom_scale = 9
         angle_limit_x = 1280.0
         angle_limit_y = 720.0
         radius_limit = 150

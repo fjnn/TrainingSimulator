@@ -7,7 +7,7 @@ import matplotlib.pyplot as plt
 
 #%%
 # Load Ronny Data
-ronny_trials = loading.load_folder('Output/sevgi/align_3d')
+ronny_trials = loading.load_folder('Output/sevgi/finger')
 # Clean Ronny Data
 ronny_trials = loading.clean_many_dataframes_from_initial_values(ronny_trials)
 

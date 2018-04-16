@@ -17,8 +17,8 @@ from datetime import datetime
 
 
 
-OUTPUT_FOLDER = "Output/sevgi/align_3d"
-OUTPUT_FILENAME_PREFIX = "align_3d"
+OUTPUT_FOLDER = "Output/caghan/finger"
+OUTPUT_FILENAME_PREFIX = "finger"
 
 ID_MARK = 'mark'
 ID_PEDAL = 'pedal'
